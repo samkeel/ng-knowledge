@@ -1,1 +1,72 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$md-ngknowledge: (
+    50 : #e7e9ea,
+    100 : #c3c8ca,
+    200 : #9ba3a7,
+    300 : #737e84,
+    400 : #556369,
+    500 : #37474f,
+    600 : #314048,
+    700 : #2a373f,
+    800 : #232f36,
+    900 : #162026,
+    A100 : #6ac6ff,
+    A200 : #37b2ff,
+    A400 : #049fff,
+    A700 : #0090ea,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ng-ngknowledge-primary: mat-palette($md-ngknowledge);
+$ng-ngknowledge-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$ng-ngknowledge-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+// $ng-ngknowledge-theme: mat-light-theme($ng-ngknowledge-primary, $ng-ngknowledge-accent, $ng-ngknowledge-warn);
+$ng-ngknowledge-theme: mat-light-theme($ng-ngknowledge-primary, $ng-ngknowledge-accent, $ng-ngknowledge-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($ng-ngknowledge-theme);
 /* You can add global styles to this file, and also import other style files */
+
+$alt-primary: mat-palette($mat-yellow);
+$alt-accent: mat-palette($mat-grey, 200);
+$alt-theme: mat-dark-theme($alt-primary, $alt-accent);
+
+.alternative {
+    @include angular-material-theme($alt-theme);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

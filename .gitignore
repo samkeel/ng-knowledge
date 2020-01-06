@@ -44,3 +44,11 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#custom ignore files
+/dist
+environment.ts
+src/environments/environment.ts
+environment.prod.ts
+src/environments/environment.prod.ts
+/.vs
