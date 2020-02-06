@@ -13,6 +13,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 //
 import { environment } from '../environments/environment';
+//FxFlex
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, // storage
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

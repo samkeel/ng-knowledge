@@ -1,4 +1,4 @@
-<div [class.alternative]="otherTheme">
+<div [class.alternative]="otherTheme" fxLayout='column'>
     <mat-sidenav-container class="sidenav-container">
         <!-- <mat-sidenav-container [class.sidenav-container]="otherTheme"> -->
         <!-- SIDENAV -->
@@ -7,18 +7,14 @@
             [opened]="false" (click)="drawer.close()">
             <mat-toolbar>Menu</mat-toolbar>
             <mat-nav-list>
-                <div *ngIf="afAuth.authState | async as user; else showNavLogin">
-                <a mat-list-item routerLink="/login" (click)="afAuth.auth.signOut()">Logout</a>
+
                 <a mat-list-item routerLink="/docs">Docs</a>
-            </div>
-                <ng-template #showNavLogin>
-                    <a mat-list-item routerLink="/login">Login</a>
-                </ng-template>
+
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>
             <!-- TOP TOOLBAR-->
-            <mat-toolbar>
+            <mat-toolbar color="primary">
                 <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
                     *ngIf="isHandset$ | async">
 
@@ -36,10 +32,7 @@
                         <a mat-button routerLink="/login">Login</a>
                     </ng-template>
                 </div>
-                <!-- Theme toggle button -->
-                <button mat-icon-button mat-icon-button color="primary" (click)="changeTheme()">
-                    <mat-icon>format_color_fill</mat-icon>
-                </button>
+
 
                 <!-- DROPDOWN MENU -->
                 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
@@ -47,10 +40,26 @@
                 </button>
 
                 <mat-menu #menu="matMenu">
+                    <section fxLayout='column' fxShow fxHide.xs="false" fxHide.lg="true">
+                        <a mat-menu-item routerLink="/">
+                            <span>A menu</span>
+                        </a>
 
-                    <a mat-menu-item routerLink="/">
-                        <span>A menu</span>
-                    </a>
+                        <div *ngIf="afAuth.authState | async as user; else showNavLogin">
+                            <a mat-menu-item routerLink="/login" (click)="afAuth.auth.signOut()">Logout</a>
+                        </div>
+                        <ng-template #showNavLogin>
+                            <a mat-menu-item routerLink="/login">Login</a>
+                        </ng-template>
+                    </section>
+
+                    <!-- Theme toggle button -->
+                    <span>
+                        <button mat-icon-button mat-icon-button color="warning" (click)="changeTheme()">
+                            <mat-icon>format_color_fill</mat-icon>
+                        </button>
+                    </span>
+
                 </mat-menu>
             </mat-toolbar>
 

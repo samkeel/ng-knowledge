@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { Doc } from '../doc'
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { BookService } from './book.service';
+import { DocModel } from './doc.model';
+
 
 @Component({
   selector: 'app-doc-home',
   templateUrl: './doc-home.component.html',
   styleUrls: ['./doc-home.component.scss']
 })
-export class DocHomeComponent implements OnInit {
+export class DocHomeComponent implements OnInit, OnDestroy {
+  documentsList: DocModel[] = [];
 
-  constructor() { }
+
+  constructor(private bookService: BookService, private db: AngularFirestore) { }
 
   ngOnInit() {
+    this.documentsList = this.bookService.getAvailableDocs();
   }
 
-  documents = [
-    new Doc('Title1', 'paragraph1'),
-    new Doc('Title2', 'paragraph2'),
-    new Doc('Title3', 'paragraph3'),
-    new Doc('Title4', 'paragraph4'),
-    new Doc('Title5', 'paragraph5')
-  ];
-
+  ngOnDestroy(){
+  }
 }

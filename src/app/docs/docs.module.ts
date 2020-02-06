@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DocHomeComponent } from './doc-home/doc-home.component';
+import { BookService } from './doc-home/book.service';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { DocHomeComponent } from './doc-home/doc-home.component';
     FormsModule,
     MatDialogModule,
     MatButtonToggleModule
-  ]
+  ],
+  providers: [BookService]
 })
 export class DocsModule { }
