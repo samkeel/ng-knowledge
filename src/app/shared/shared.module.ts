@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatGridListModule} from '@angular/material/grid-list'; 
+import {MatTreeModule} from '@angular/material/tree';
 
 const components = [
   ShellComponent
@@ -34,7 +35,8 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatSnackBarModule,
-  MatGridListModule
+  MatGridListModule,
+  MatTreeModule
 ];
 
 @NgModule({

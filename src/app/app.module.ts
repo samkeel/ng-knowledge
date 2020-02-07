@@ -15,6 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 //FxFlex
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { treeNodeService } from './shared/shell/treeNode.service';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     AngularFireStorageModule, // storage
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [treeNodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
