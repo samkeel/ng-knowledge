@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatGridListModule} from '@angular/material/grid-list'; 
 import {MatTreeModule} from '@angular/material/tree';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const components = [
   ShellComponent
@@ -23,6 +24,7 @@ const components = [
 const modules = [
   CommonModule,
   RouterModule,
+  FlexLayoutModule,
   MatToolbarModule,
   MatIconModule,
   LayoutModule,
