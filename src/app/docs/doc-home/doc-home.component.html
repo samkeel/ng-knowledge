@@ -1,12 +1,13 @@
 <section>
-    <p>doc home</p>
-    <mat-card class="" *ngFor="let document of documentsList">
-        <mat-card-header>
-            <mat-card-title>{{document.title}}</mat-card-title>
-            <mat-card-subtitle>{{document.author}}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <p>{{document.paragraph}}</p>
-        </mat-card-content>
-    </mat-card>
+    <div fxLayout="column" fxLayoutGap="20px" class="doc-home-card">
+        <mat-card *ngFor="let document of documentsList">
+            <mat-card-header fxLayout="column" fxLayoutAlign=" center">
+                <mat-card-title>{{document.title}}</mat-card-title>
+                <mat-card-subtitle>{{document.author}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                <p>{{document.paragraph}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </section>
