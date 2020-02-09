@@ -8,7 +8,16 @@ export class treeNodeService {
             id: 2, 
             name: "Subject2",
             children: [
-                {id: 1, name: "child 1"},
+                {id: 1, name: "Routed", routeLink: "/docs"},
+                {id: 2, name: "child 2"},
+                {id: 3, name: "child 3"}
+            ]            
+        },
+        {
+            id: 3,
+            name: "Subject3",
+            children: [
+                {id: 1, name: "Routed", routeLink: "/docs"},
                 {id: 2, name: "child 2"},
                 {id: 3, name: "child 3"}
             ]            

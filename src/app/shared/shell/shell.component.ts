@@ -5,6 +5,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { treeNodeModel } from './treeNode.model';
 import { treeNodeService } from './treeNode.service';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { NestedTreeControl } from '@angular/cdk/tree';
 
 @Component({
   selector: 'app-shell',
@@ -21,12 +23,18 @@ export class ShellComponent implements OnInit {
     );
 
   trees: treeNodeModel[] = []
+  
+  treeControl = new NestedTreeControl<treeNodeModel>(node => node.children);
+  treeDataSource = new MatTreeNestedDataSource<treeNodeModel>();
+
+
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     public afAuth: AngularFireAuth,
 
     private treeNodeService: treeNodeService
+    // this.treeDataSource.data
   ) { }
 
   changeTheme() {
@@ -35,7 +43,9 @@ export class ShellComponent implements OnInit {
 
   ngOnInit() {
     this.trees = this.treeNodeService.getTrees();
-    console.log(this.trees);
+    this.treeDataSource.data = this.trees;
   }
+
+  hasChild = (_: number, node: treeNodeModel) => !!node.children && node.children.length > 0;
 
 }
