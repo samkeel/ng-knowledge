@@ -19,9 +19,14 @@ export class DocHomeComponent implements OnInit, OnDestroy {
   constructor(private bookService: BookService, private db: AngularFirestore) { }
 
   ngOnInit() {
-    this.documentsList = this.bookService.getAvailableDocs();
+    this.getDocs();
   }
 
   ngOnDestroy(){
+  }
+
+  getDocs() {
+    this.bookService.getBooks()
+    .subscribe(documentsList => this.documentsList = documentsList);
   }
 }
