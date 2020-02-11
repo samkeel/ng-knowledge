@@ -13,6 +13,10 @@ export class BookService {
     constructor(private db: AngularFirestore) { }
 
     getBooks(): Observable<any[]> {
-        return this.db.collection('Docs').valueChanges();
+        return this.db.collection('Docs', ref => ref.orderBy('id')).valueChanges();
+    }
+
+    deleteDoc(DocId: string) {
+        return this.db.collection('Docs').doc(DocId).delete();
     }
 }

@@ -3,10 +3,19 @@ import { treeNodeModel } from './treeNode.model';
 
 export class treeNodeService {
     private treeNodes: treeNodeModel[] = [
-        {id: 1, name: "Subject1"},
+        {id: 1, name: "Engineering"},
         {
             id: 2, 
-            name: "Subject2",
+            name: "SP3D",
+            children: [
+                {id: 1, name: "Components", routeLink: "/docs"},
+                {id: 2, name: "Cable Ladder"},
+                {id: 3, name: "Conduits"}
+            ]            
+        },
+        {
+            id: 3,
+            name: "Microstation",
             children: [
                 {id: 1, name: "Routed", routeLink: "/docs"},
                 {id: 2, name: "child 2"},
@@ -15,7 +24,7 @@ export class treeNodeService {
         },
         {
             id: 3,
-            name: "Subject3",
+            name: "AutoCAD",
             children: [
                 {id: 1, name: "Routed", routeLink: "/docs"},
                 {id: 2, name: "child 2"},
