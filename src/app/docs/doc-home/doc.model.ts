@@ -1,5 +1,5 @@
 export interface DocModel {
-    id: number;
+    _id: number | string;
     author: string;
     title: string;
     paragraph: string;

@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy, HostBinding } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostBinding, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BookService } from './book.service';
 import { DocModel } from './doc.model';
 import { routeSlideStateTrigger } from 'src/app/shared/route-animations';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -14,7 +15,8 @@ import { routeSlideStateTrigger } from 'src/app/shared/route-animations';
 export class DocHomeComponent implements OnInit, OnDestroy {
   @HostBinding('@routeSlideState') routeAnimation = true;
 
-  documentsList: DocModel[] = [];  
+  documentsList: DocModel[] = [];
+  documentsSubscription: Subscription;
 
   constructor(private bookService: BookService, private db: AngularFirestore) { }
 
@@ -22,11 +24,19 @@ export class DocHomeComponent implements OnInit, OnDestroy {
     this.getDocs();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
   }
 
   getDocs() {
-    this.bookService.getBooks()
-    .subscribe(documentsList => this.documentsList = documentsList);
+    this.documentsSubscription = this.bookService.docsChanged.subscribe(
+      documentsList => (this.documentsList = documentsList)
+    );
+    this.bookService.fetchDocs();
   }
+
+  // getDocs() {
+  //   this.bookService.getBooks()
+  //   .subscribe(documentsList => this.documentsList = documentsList);
+  // }
+
 }
