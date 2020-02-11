@@ -25,18 +25,30 @@ export class DocHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    //unsubscribe from subject
+    this.documentsSubscription.unsubscribe();
   }
 
   getDocs() {
+    //subscribe to new subject
     this.documentsSubscription = this.bookService.docsChanged.subscribe(
-      documentsList => (this.documentsList = documentsList)
-    );
-    this.bookService.fetchDocs();
+      documentsList => (this.documentsList = documentsList));
+    this.bookService.fetchDocs(); 
   }
 
-  // getDocs() {
-  //   this.bookService.getBooks()
-  //   .subscribe(documentsList => this.documentsList = documentsList);
+  //Delete single object by Document ID
+  onDelete(document) {
+    this.db.doc(`Docs/${document.id}`).delete();
+  }
+
+  //Update component
+  // onUpdate(document) {
+  //   this.db.doc(`Docs/${document.id}`).update();
+  // }
+
+  // Add
+  // onAdd(){
+  //   this.db.collection(`Docs`).add({});
   // }
 
 }
