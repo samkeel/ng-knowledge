@@ -10,7 +10,7 @@ import { BookService } from '../doc-home/book.service';
 })
 export class DocsMainFormComponent implements OnInit {
   addNewForm: FormGroup;
-  // NewDoc: DocModel;
+  doc: DocModel;
 
   constructor(private bookService: BookService) { }
 
@@ -27,13 +27,11 @@ export class DocsMainFormComponent implements OnInit {
     });
   }
 
-  onSubmit(doc: DocModel) {
-    // console.log(this.addNewForm);
-    doc = this.addNewForm.value;
-    // console.log(doc);
+  onSubmit() {
+    this.doc = this.addNewForm.value;
+    // console.log(this.doc);
     this.addNewForm.reset()
-    this.bookService.onAdd(doc);
-    
+    this.bookService.onAdd(this.doc);    
   }
 
 }
