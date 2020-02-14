@@ -1,5 +1,6 @@
 <section>
     <div fxLayout="column" fxLayoutGap="20px" class="doc-home-card">
+        <app-docs-main-form></app-docs-main-form>
         <mat-card *ngFor="let document of documentsList">
             <mat-card-header fxLayout="column" fxLayoutAlign="start">
                 <mat-card-title>{{document.title}}</mat-card-title>
@@ -13,6 +14,6 @@
                 <button mat-button>Edit</button>
                 <button mat-button (click)="onDelete(document)">Delete</button>
             </mat-card-actions>
-        </mat-card>        
+        </mat-card>                
     </div>
 </section>

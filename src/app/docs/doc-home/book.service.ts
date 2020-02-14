@@ -42,4 +42,10 @@ export class BookService {
                 this.docsChanged.next([...this.availableDocs]);
             });
     }
+
+    // Add
+    onAdd(doc: DocModel) {
+        this.db.collection('Docs').add(doc);
+        console.log(doc);
+    }
 }
