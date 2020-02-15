@@ -31,7 +31,11 @@ export class DocsMainFormComponent implements OnInit {
     this.doc = this.addNewForm.value;
     // console.log(this.doc);
     this.addNewForm.reset()
-    this.bookService.onAdd(this.doc);    
+    // Convert first letter in Title input field to uppercase
+    const upper = this.doc.title.replace(/^\w/, c => c.toUpperCase());
+    this.doc.title = upper;
+
+    this.bookService.onAdd(this.doc);
   }
 
 }

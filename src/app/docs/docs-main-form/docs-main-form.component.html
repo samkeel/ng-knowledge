@@ -3,8 +3,13 @@
         <form [formGroup]="addNewForm" (ngSubmit)="onSubmit()">
             <mat-card>
                 <mat-card-header fxLayout="column" fxLayoutAlign="start">
-                    <mat-card-title>Title:
-                        <input type="text" id="title" [formControlName]="'title'" class="form-control">
+                    <mat-card-title>
+                        <!-- <input type="text" id="title" [formControlName]="'title'" class="form-control"> -->
+                        <mat-form-field appearance="outline">
+                            <mat-label>Chapter Title</mat-label>
+                            <input matInput placeholder="Title" id="title" [formControlName]="'title'"
+                                class="form-control">
+                        </mat-form-field>
                     </mat-card-title>
                     <mat-card-subtitle>by:
                         <input type="text" id="author" [formControlName]="'author'" class="form-control">
@@ -14,9 +19,11 @@
                     <p>Id:
                         <input type="text" id="_id" [formControlName]="'_id'" class="form-control">
                     </p>
-                    <p>paragraph:
-                        <input type="text" id="paragraph" [formControlName]="'paragraph'" class="form-control">
-                    </p>
+                    <mat-form-field appearance="fill" class="text-area-full-width">
+                        <mat-label>Paragraph</mat-label>
+                        <textarea matInput id="paragraph" [formControlName]="'paragraph'" class="form-control"
+                            cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5" cdkAutosizeMaxRows="15"></textarea>
+                    </mat-form-field>
                 </mat-card-content>
                 <mat-card-actions>
                     <button mat-button type="submit" [disabled]="!addNewForm.valid">Submit</button>

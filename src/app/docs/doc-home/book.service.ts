@@ -16,12 +16,12 @@ export class BookService {
     //depreciated getbooks method. 
     //valueChanges fast and ignores meta data.
     getBooks(): Observable<any[]> {
-        return this.db.collection('Docs', ref => ref.orderBy('_id')).valueChanges();
+        return this.db.collection('Docs', ref => ref.orderBy("_id")).valueChanges();
     }
 
     fetchDocs() {
         this.db
-            .collection('Docs', ref => ref.orderBy('_id')) //filter query to order database results
+            .collection('Docs', ref => ref.orderBy('title')) //filter query to order database results
             .snapshotChanges() //snapshotChanges to get the firebase ID field 
             .pipe(
                 map(docArray => {
