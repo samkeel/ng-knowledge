@@ -28,7 +28,6 @@ export class BookService {
                     return docArray.map(doc => {
                         return { //map the snapshotChanges data to array
                             id: doc.payload.doc.id,
-                            _id: doc.payload.doc.data()['_id'],
                             author: doc.payload.doc.data()['author'],
                             paragraph: doc.payload.doc.data()['paragraph'],
                             title: doc.payload.doc.data()['title']

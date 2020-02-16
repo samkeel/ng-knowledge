@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DocModel } from '../doc-home/doc.model';
 import { BookService } from '../doc-home/book.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-docs-main-form',
@@ -12,7 +13,7 @@ export class DocsMainFormComponent implements OnInit {
   addNewForm: FormGroup;
   doc: DocModel;
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, public afAuth: AngularFireAuth) { }
 
   ngOnInit() {
     this.formData();
@@ -20,8 +21,6 @@ export class DocsMainFormComponent implements OnInit {
 
   formData() {
     this.addNewForm = new FormGroup({
-      '_id': new FormControl(null, Validators.required),
-      'author': new FormControl(null),
       'title': new FormControl(null, Validators.required),
       'paragraph': new FormControl(null)
     });
@@ -29,11 +28,12 @@ export class DocsMainFormComponent implements OnInit {
 
   onSubmit() {
     this.doc = this.addNewForm.value;
-    // console.log(this.doc);
     this.addNewForm.reset()
     // Convert first letter in Title input field to uppercase
-    const upper = this.doc.title.replace(/^\w/, c => c.toUpperCase());
+    const upper = this.doc.title.replace(/^\w/, c => c.toUpperCase());    
     this.doc.title = upper;
+    // current users signin email populates author field
+    this.doc.author = this.afAuth.auth.currentUser.email;
 
     this.bookService.onAdd(this.doc);
   }
