@@ -16,6 +16,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatGridListModule} from '@angular/material/grid-list'; 
 import {MatTreeModule} from '@angular/material/tree';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const components = [
   ShellComponent
@@ -38,7 +39,8 @@ const modules = [
   MatInputModule,
   MatSnackBarModule,
   MatGridListModule,
-  MatTreeModule
+  MatTreeModule,
+  MatDialogModule
 ];
 
 @NgModule({

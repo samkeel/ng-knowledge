@@ -9,20 +9,20 @@
 @include mat-core();
 
 $md-ngknowledge: (
-    50 : #e7e9ea,
-    100 : #c3c8ca,
-    200 : #9ba3a7,
-    300 : #737e84,
-    400 : #556369,
-    500 : #37474f,
-    600 : #314048,
-    700 : #2a373f,
-    800 : #232f36,
-    900 : #162026,
-    A100 : #6ac6ff,
-    A200 : #37b2ff,
-    A400 : #049fff,
-    A700 : #0090ea,
+    50 : #e7e9eb,
+    100 : #c2c8cc,
+    200 : #9aa4aa,
+    300 : #718088,
+    400 : #52646f,
+    500 : #344955,
+    600 : #2f424e,
+    700 : #273944,
+    800 : #21313b,
+    900 : #15212a,
+    A100 : #6dbeff,
+    A200 : #3aa7ff,
+    A400 : #0791ff,
+    A700 : #0083ec,
     contrast: (
         50 : #000000,
         100 : #000000,
@@ -45,7 +45,7 @@ $md-ngknowledge: (
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $ng-ngknowledge-primary: mat-palette($md-ngknowledge);
-$ng-ngknowledge-accent: mat-palette($mat-pink, A200, A100, A400);
+$ng-ngknowledge-accent: mat-palette($md-ngknowledge, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $ng-ngknowledge-warn: mat-palette($mat-red);

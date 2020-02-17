@@ -45,6 +45,6 @@ export class BookService {
     // Add
     onAdd(doc: DocModel) {
         this.db.collection('Docs').add(doc);
-        console.log(doc);
+        // console.log(doc);
     }
 }
