@@ -22,7 +22,7 @@ export class DocsHeaderComponent implements OnInit {
 
   openNewDocDialog(): void {
     const dialogRef = this.dialog.open(NewDialogComponent, {
-      width: '400px',
+      width: '80vw',
       data: {}
     });
 

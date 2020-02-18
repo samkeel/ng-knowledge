@@ -5,7 +5,7 @@ import { DocModel } from '../doc-home/doc.model';
 @Component({
   selector: 'app-new-dialog',
   template: `    
-    <div mat-dialog-content>
+    <div mat-dialog-content fxLayout="column" fxLayoutAlign=" center" >
       <mat-form-field appearance="outline" class="text-area-full-width">
         <mat-label>Chapter Title</mat-label>
         <input matInput placeholder="Title" [(ngModel)]="data.title">
@@ -23,7 +23,9 @@ import { DocModel } from '../doc-home/doc.model';
       <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Create</button>
     </div>
   `,
-  styles: []
+  styles: [
+    '.text-area-full-width { width: 100%; }'
+  ]
 })
 export class NewDialogComponent implements OnInit {
 
