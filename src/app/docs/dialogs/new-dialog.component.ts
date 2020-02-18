@@ -5,6 +5,7 @@ import { DocModel } from '../doc-home/doc.model';
 @Component({
   selector: 'app-new-dialog',
   template: `    
+    <h1 mat-dialog-title>New:</h1>
     <div mat-dialog-content fxLayout="column" fxLayoutAlign=" center" >
       <mat-form-field appearance="outline" class="text-area-full-width">
         <mat-label>Chapter Title</mat-label>
@@ -18,10 +19,10 @@ import { DocModel } from '../doc-home/doc.model';
       </mat-form-field>
     </div>
 
-    <div mat-dialog-actions>
+    <mat-dialog-actions align="end">
       <button mat-button (click)="onNoClick()">Cancel</button>
       <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Create</button>
-    </div>
+    </mat-dialog-actions>
   `,
   styles: [
     '.text-area-full-width { width: 100%; }'

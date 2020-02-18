@@ -4,6 +4,8 @@ import { BookService } from './book.service';
 import { DocModel } from './doc.model';
 import { routeSlideStateTrigger } from 'src/app/shared/route-animations';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { EditDialogComponent } from '../dialogs/edit-dialog.component';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class DocHomeComponent implements OnInit, OnDestroy {
   documentsList: DocModel[] = [];
   documentsSubscription: Subscription;
 
-  constructor(private bookService: BookService, private db: AngularFirestore) { }
+  constructor(private bookService: BookService, private db: AngularFirestore, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getDocs();
@@ -51,4 +53,16 @@ export class DocHomeComponent implements OnInit, OnDestroy {
   //   this.db.collection(`Docs`).add({});
   // }
 
+  openEditDialog(): void {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '80vw',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // console.log(result);
+      }
+    });
+  }
 }
