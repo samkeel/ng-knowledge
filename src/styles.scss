@@ -60,13 +60,14 @@ $ng-ngknowledge-theme: mat-light-theme($ng-ngknowledge-primary, $ng-ngknowledge-
 @include angular-material-theme($ng-ngknowledge-theme);
 /* You can add global styles to this file, and also import other style files */
 
-$alt-primary: mat-palette($mat-yellow);
-$alt-accent: mat-palette($mat-grey, 200);
-$alt-theme: mat-dark-theme($alt-primary, $alt-accent);
+// dark theme removed from app. code left for future updates
+// $alt-primary: mat-palette($mat-yellow);
+// $alt-accent: mat-palette($mat-grey, 200);
+// $alt-theme: mat-dark-theme($alt-primary, $alt-accent);
 
-.alternative {
-    @include angular-material-theme($alt-theme);
-}
+// .alternative {
+//     @include angular-material-theme($alt-theme);
+// }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

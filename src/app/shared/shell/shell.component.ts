@@ -26,9 +26,7 @@ export class ShellComponent implements OnInit {
   
   treeControl = new NestedTreeControl<treeNodeModel>(node => node.children);
   treeDataSource = new MatTreeNestedDataSource<treeNodeModel>();
-
-
-
+  
   constructor(
     private breakpointObserver: BreakpointObserver,
     public afAuth: AngularFireAuth,
@@ -37,9 +35,9 @@ export class ShellComponent implements OnInit {
     // this.treeDataSource.data
   ) { }
 
-  changeTheme() {
-    this.otherTheme = !this.otherTheme;
-  }
+  // changeTheme() {
+  //   this.otherTheme = !this.otherTheme;
+  // }
 
   ngOnInit() {
     this.trees = this.treeNodeService.getTrees();
