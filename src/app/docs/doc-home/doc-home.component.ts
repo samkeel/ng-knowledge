@@ -6,7 +6,7 @@ import { routeSlideStateTrigger } from 'src/app/shared/route-animations';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { EditDialogComponent } from '../dialogs/edit-dialog.component';
-
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-doc-home',
@@ -16,11 +16,17 @@ import { EditDialogComponent } from '../dialogs/edit-dialog.component';
 })
 export class DocHomeComponent implements OnInit, OnDestroy {
   @HostBinding('@routeSlideState') routeAnimation = true;
+  @Input() document;
+
+  doc: DocModel;  
 
   documentsList: DocModel[] = [];
   documentsSubscription: Subscription;
 
-  constructor(private bookService: BookService, private db: AngularFirestore, public dialog: MatDialog) { }
+  constructor(private bookService: BookService, 
+    private db: AngularFirestore, 
+    public dialog: MatDialog, 
+    public afAuth: AngularFireAuth) { }
 
   ngOnInit() {
     this.getDocs();
@@ -35,34 +41,28 @@ export class DocHomeComponent implements OnInit, OnDestroy {
     //subscribe to new subject
     this.documentsSubscription = this.bookService.docsChanged.subscribe(
       documentsList => (this.documentsList = documentsList));
-    this.bookService.fetchDocs(); 
+    this.bookService.fetchDocs();
   }
 
   //Delete single object by Document ID
   onDelete(document) {
-    this.db.doc(`Docs/${document.id}`).delete();
+    this.bookService.deleteDocument(document);
   }
 
-  //Update component
-  // onUpdate(document) {
-  //   this.db.doc(`Docs/${document.id}`).update();
-  // }
-
-  // Add
-  // onAdd(){
-  //   this.db.collection(`Docs`).add({});
-  // }
-
-  openEditDialog(): void {
+  openEditDialog(document): void {
+    //Transfer document object to modal dialog via the Data property 
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '80vw',
-      data: {}
+      data: { document }
     });
 
+    //Data property is returned as 'Result' when dialog closes.
+    //Map result to a document model and make any changes before writing document model back to DB.
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // console.log(result);
+        this.bookService.onUpdate(result);
       }
     });
   }
+
 }

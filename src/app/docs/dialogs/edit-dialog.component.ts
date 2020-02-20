@@ -8,12 +8,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     <div mat-dialog-content fxLayout="column" fxLayoutAlign=" center" >
       <mat-form-field appearance="outline" class="text-area-full-width">
         <mat-label>Chapter Title</mat-label>
-        <input matInput placeholder="Title" [(ngModel)]="data.title">
+        <input matInput placeholder="Title" [(ngModel)]="data.document.title">
       </mat-form-field>    
 
       <mat-form-field appearance="outline" class="text-area-full-width">
         <mat-label>Paragraph</mat-label>
-        <textarea matInput placeholder="Paragraph" [(ngModel)]="data.paragraph"
+        <textarea matInput placeholder="Paragraph" [(ngModel)]="data.document.paragraph"
           cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5" cdkAutosizeMaxRows="15"></textarea>
       </mat-form-field>
     </div>

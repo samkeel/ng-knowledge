@@ -13,12 +13,6 @@ export class BookService {
     private availableDocs: DocModel[] = [];
     constructor(private db: AngularFirestore) { }
 
-    //depreciated getbooks method. 
-    //valueChanges fast and ignores meta data.
-    getBooks(): Observable<any[]> {
-        return this.db.collection('Docs', ref => ref.orderBy("_id")).valueChanges();
-    }
-
     fetchDocs() {
         this.db
             .collection('Docs', ref => ref.orderBy('title')) //filter query to order database results
@@ -42,9 +36,23 @@ export class BookService {
             });
     }
 
+    //delete document
+    deleteDocument(document) {
+        this.db.doc(`Docs/${document.id}`).delete();
+    }
+
     // Add
     onAdd(doc: DocModel) {
         this.db.collection('Docs').add(doc);
-        // console.log(doc);
+    }
+
+    // update
+    onUpdate(document) {
+        const upper = document.document.title.replace(/^\w/, c => c.toUpperCase());
+
+        this.db.doc(`Docs/${document.document.id}`).update({
+            title: upper,
+            paragraph: document.document.paragraph
+        });
     }
 }
